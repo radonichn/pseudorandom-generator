@@ -7,6 +7,15 @@
   width: calc(100% - 40px);
   padding: 20px 40px;
   overflow-y: scroll;
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  grid-template-rows: repeat(auto-fit, 40px);
+
+  .random-number {
+    text-align: right;
+    margin: 5px 0;
+  }
 
   @media all and (max-width: $breakpoint-md) {
     width: 100%;

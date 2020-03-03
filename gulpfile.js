@@ -69,9 +69,9 @@ function css() {
   return gulp
     .src('./src/scss/main.scss')
     .pipe(plumber())
-    .pipe(sass({ outputStyle: 'expanded', }))
+    .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(gulp.dest('./dist/css/'))
-    .pipe(rename({ suffix: '.min', }))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(postcss([autoprefixer(), cssnano()]))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browsersync.stream());
@@ -83,8 +83,7 @@ function scriptsLint() {
     .src(['./src/**/*.js', './gulpfile.js'])
     .pipe(plumber())
     .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    .pipe(eslint.format());
 }
 
 // Transpile, concatenate and minify scripts
@@ -128,7 +127,6 @@ function watchFiles() {
 const js = gulp.series(scriptsLint, scripts);
 const build = gulp.series(clean, gulp.parallel(css, js, pugBuild, fontsBuild));
 const watch = gulp.parallel(watchFiles, browserSync);
-
 
 // export tasks
 exports.images = images;

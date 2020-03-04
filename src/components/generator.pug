@@ -1,0 +1,17 @@
+.container.generator
+    h1.title Pseudorandom Numbers Generator
+
+    form.form
+        .form-item#item-min
+            input#min(placeholder="Please input min value" required)
+            p Min value must be number in range 0-1000
+        .form-item#item-max
+            input#max(placeholder="Please input max value" required)
+            p Max value must be number in range 1-1000
+        .form-item#item-amount
+            input#amount(placeholder="Please input amount of numbers" required)
+            p Amount value must be number in range 1-1000
+
+        .btn-container
+            input#clear.btn.submit(type="submit" value="Generate")
+            button.btn.clear Clear

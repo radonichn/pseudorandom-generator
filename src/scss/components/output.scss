@@ -1,0 +1,14 @@
+.output {
+  background-color: $accent-2;
+  color: #000;
+  font-size: 18px;
+  height: 500px;
+  max-height: 500px;
+  width: calc(100% - 40px);
+  padding: 20px 40px;
+  overflow-y: scroll;
+
+  @media all and (max-width: $breakpoint-md) {
+    width: 100%;
+  }
+}

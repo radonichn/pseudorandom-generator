@@ -26,25 +26,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!isNaN(value)) {
                     switch (key) {
                         case 'min':
-                            if (value < 0 || value > 1000) {
-                                errors.push(key);
+                            if (value < 0 || value > 10000) {
+                                errors.push({ [key]: 'The min value should be number in range from 0 to 10000', });
+
+                                break;
+                            }
+                            if (value >= max) {
+                                errors.push({ [key]: 'The min value should be less than the max value', });
                             }
 
                             break;
+
+                        case 'max':
+                            if (value <= 0 || value > 10000) {
+                                errors.push({ [key]: 'The value should be number in range from 1 to 10000', });
+
+                                break;
+                            }
+                            if (value <= min) {
+                                errors.push({ [key]: 'The max value should be greater than the min value', });
+                            }
+
+
                         default:
-                            if (value <= 0 || value > 1000) {
-                                errors.push(key);
+                            if (value <= 0 || value > 10000) {
+                                errors.push({ [key]: 'The value should be number in range from 1 to 10000', });
                             }
 
                             break;
                     }
                 } else {
-                    errors.push(key);
+                    errors.push({ [key]: 'The value should be number', });
                 }
             });
 
-            errors.forEach(item => {
-                document.getElementById(`item-${item}`).classList.add('error');
+            console.log(errors);
+
+            errors.forEach(err => {
+                Object.entries(err).forEach(([key, value]) => {
+                    document.getElementById(`item-${key}`).classList.add('error');
+                    document.querySelector(`.err-${key}`).innerHTML += `${value}<br />`;
+                });
             });
 
             if (errors.length === 0) {
